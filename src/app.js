@@ -28,7 +28,7 @@ export const createApp = () => {
 
   // connectDB();
   app.use(helmet());
-  app.use(cors({ origin: env.CLIENT_ORIGIN.split(','), credentials: true }));
+  app.use(cors({ origin: "https://x-frontend-cyan.vercel.app", credentials: true }));
   app.use(compression());
   app.use(cookieParser());
   app.use(express.json({ limit: '2mb' }));

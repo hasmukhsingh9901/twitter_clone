@@ -11,7 +11,7 @@ const schema = z.object({
   JWT_REFRESH_SECRET: z.string().min(24),
   ACCESS_TOKEN_TTL: z.string().default('15m'),
   REFRESH_TOKEN_TTL: z.string().default('30d'),
-  CLIENT_ORIGIN: z.string().default('http://localhost:3000'),
+  CLIENT_ORIGIN: z.string().default('https://x-frontend-cyan.vercel.app'),
   REDIS_URL: z.string().default('redis://localhost:6379'),
   CLOUDINARY_CLOUD_NAME: z.string().optional(),
   CLOUDINARY_API_KEY: z.string().optional(),
