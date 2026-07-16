@@ -25,6 +25,8 @@ const swaggerSpec = swaggerJSDoc({
 
 export const createApp = () => {
   const app = express();
+
+  // connectDB();
   app.use(helmet());
   app.use(cors({ origin: env.CLIENT_ORIGIN.split(','), credentials: true }));
   app.use(compression());
