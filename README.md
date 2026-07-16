@@ -36,6 +36,18 @@ Swagger docs:
 http://localhost:5000/api/docs
 ```
 
+## Backend features
+
+- Authentication and JWT refresh/logout flow
+- User profile management and search
+- Tweet creation, updates, deletion, likes, bookmarks, reposts, and timeline access
+- Follow/unfollow relationships and follower/following lists
+- Notifications for likes, follows, mentions, reposts, and messages
+- Conversations and direct messaging delivered through a pub/sub-based flow
+- Media upload support through the media controller and model
+- Admin dashboard and report management
+- Search across users and tweets
+
 ## Main Routes
 
 - `POST /api/v1/auth/register`
@@ -56,4 +68,20 @@ http://localhost:5000/api/docs
 - `POST /api/v1/media`
 - `GET /api/v1/search?q=term`
 - `GET /api/v1/admin/dashboard`
+
+## Seed dummy data
+
+Use either of these options to bulk-insert demo data locally:
+
+```bash
+npm run seed:dummy
+```
+
+Or send a request to the seeded endpoint:
+
+```bash
+POST /api/v1/seed
+```
+
+The seed script creates sample users, tweets, follows, likes, bookmarks, reposts, and notifications for local development.
 

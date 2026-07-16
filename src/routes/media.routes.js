@@ -4,4 +4,4 @@ import { requireAuth } from '../middleware/auth.js';
 
 export const mediaRoutes = Router();
 
-mediaRoutes.post('/', requireAuth, upload.array('media', 4), uploadMedia);
+mediaRoutes.post('/', requireAuth, upload.any(), uploadMedia);

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { search } from '../controllers/search.controller.js';
+import { seedDummyDataRoute } from '../controllers/seed.controller.js';
 import { adminRoutes } from './admin.routes.js';
 import { authRoutes } from './auth.routes.js';
 import { followRoutes } from './follow.routes.js';
@@ -20,3 +21,4 @@ routes.use('/messages', messageRoutes);
 routes.use('/media', mediaRoutes);
 routes.use('/admin', adminRoutes);
 routes.get('/search', search);
+routes.post('/seed', seedDummyDataRoute);

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { blockUser, getProfile, me, muteUser, searchUsers, updateMe, updateProfileSchema } from '../controllers/user.controller.js';
+import { blockUser, getProfile, me, muteUser, searchUsers, unmuteUser, updateMe, updateProfileSchema } from '../controllers/user.controller.js';
 import { requireAuth } from '../middleware/auth.js';
 import { validate } from '../middleware/validate.js';
 
@@ -11,3 +11,4 @@ userRoutes.get('/search', requireAuth, searchUsers);
 userRoutes.get('/:username', getProfile);
 userRoutes.post('/:userId/block', requireAuth, blockUser);
 userRoutes.post('/:userId/mute', requireAuth, muteUser);
+userRoutes.post('/:userId/unmute', requireAuth, unmuteUser);

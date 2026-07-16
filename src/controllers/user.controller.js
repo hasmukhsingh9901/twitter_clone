@@ -68,3 +68,10 @@ export const muteUser = asyncHandler(async (req, res) => {
   });
   ok(res, null, "User muted");
 });
+
+export const unmuteUser = asyncHandler(async (req, res) => {
+  await User.findByIdAndUpdate(req.user._id, {
+    $pull: { mutedUsers: req.params.userId },
+  });
+  ok(res, null, "User unmuted");
+});

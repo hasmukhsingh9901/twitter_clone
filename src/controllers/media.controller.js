@@ -30,12 +30,19 @@ const uploadToCloudinary = (file) =>
   });
 
 export const uploadMedia = asyncHandler(async (req, res) => {
-  if (!env.CLOUDINARY_CLOUD_NAME)
+  if (!env.CLOUDINARY_CLOUD_NAME || !env.CLOUDINARY_API_KEY || !env.CLOUDINARY_API_SECRET) {
     return res
       .status(503)
       .json({ success: false, message: "Cloudinary is not configured" });
+  }
+
+  const files = Array.isArray(req.files) ? req.files : req.file ? [req.file] : [];
+  if (files.length === 0) {
+    return res.status(400).json({ success: false, message: "No files uploaded" });
+  }
+
   const media = await Promise.all(
-    (req.files || []).map(async (file) => {
+    files.map(async (file) => {
       const result = await uploadToCloudinary(file);
       return Media.create({
         owner: req.user._id,
@@ -47,5 +54,6 @@ export const uploadMedia = asyncHandler(async (req, res) => {
       });
     }),
   );
+
   ok(res, media, "Media uploaded", 201);
 });
